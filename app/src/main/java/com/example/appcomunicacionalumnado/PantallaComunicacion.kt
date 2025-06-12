@@ -73,23 +73,17 @@ fun PantallaComunicacion(navController: NavHostController) {
     val fraseConstruida = remember { mutableStateListOf<Pictograma>() }
 
     val tts = remember {
-        TextToSpeech(context) { status ->
-        }
+        TextToSpeech(context) { /* Init callback vacío */ }
     }
 
     LaunchedEffect(idiomaSeleccionado) {
         val locale = when (idiomaSeleccionado) {
             "Castellano" -> Locale("es", "ES")
-            "Galego" -> Locale("pt", "PT")  // si usas portugués para gallego
+            "Galego" -> Locale("pt", "PT")  // Puedes ajustar el locale a gallego correcto si existe
             "English" -> Locale("en", "US")
             else -> Locale.getDefault()
         }
-        val result = tts.setLanguage(locale)
-        if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-            println("Idioma $idiomaSeleccionado no soportado o faltan datos")
-        } else {
-            println("Idioma $idiomaSeleccionado configurado correctamente")
-        }
+        tts.setLanguage(locale)
     }
 
     DisposableEffect(Unit) {
@@ -102,7 +96,7 @@ fun PantallaComunicacion(navController: NavHostController) {
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { Text(stringResource(R.string.comunicacion)) },
+                title = { Text(stringResource(R.string.comunicacion), style = MaterialTheme.typography.headlineSmall) },
                 navigationIcon = {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
@@ -118,96 +112,138 @@ fun PantallaComunicacion(navController: NavHostController) {
             modifier = Modifier
                 .padding(paddingValues)
                 .fillMaxSize()
-                .padding(16.dp)
+                .padding(horizontal = 24.dp, vertical = 16.dp)
         ) {
-            // Fila de categorías
-            LazyRow(modifier = Modifier.fillMaxWidth()) {
+            // Fila categorías
+            LazyRow(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
                 lazyItems(categorias) { categoria ->
+                    val isSelected = categoria == categoriaSeleccionada
                     Button(
                         onClick = { categoriaSeleccionada = categoria },
-                        modifier = Modifier
-                            .padding(end = 8.dp)
+                        shape = MaterialTheme.shapes.medium,
+                        colors = if (isSelected) {
+                            ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.primary)
+                        } else {
+                            ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surfaceVariant)
+                        },
+                        modifier = Modifier.height(40.dp)
                     ) {
-                        Text(categoria.nombre)
+                        Text(
+                            categoria.nombre,
+                            style = MaterialTheme.typography.labelLarge,
+                            color = if (isSelected) MaterialTheme.colorScheme.onPrimary else MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(20.dp))
+
+            // Frase construida
+            LazyRow(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(96.dp),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                lazyItems(fraseConstruida) { pictograma ->
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        modifier = Modifier.padding(end = 4.dp)
+                    ) {
+                        Surface(
+                            tonalElevation = 4.dp,
+                            shape = MaterialTheme.shapes.small,
+                            modifier = Modifier.size(64.dp)
+                        ) {
+                            Image(
+                                painter = painterResource(pictograma.imagenResId),
+                                contentDescription = pictograma.nombre,
+                                modifier = Modifier.padding(8.dp)
+                            )
+                        }
+                        Spacer(modifier = Modifier.height(4.dp))
+                        Text(
+                            pictograma.nombre,
+                            style = MaterialTheme.typography.labelSmall
+                        )
                     }
                 }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            LazyRow(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(100.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                lazyItems(fraseConstruida) { pictograma ->
-                    Column(
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier.padding(end = 8.dp)
-                    ) {
-                        Image(
-                            painter = painterResource(pictograma.imagenResId),
-                            contentDescription = pictograma.nombre,
-                            modifier = Modifier.size(64.dp)
-                        )
-                        Text(pictograma.nombre)
-                    }
-                }
-            }
-
+            // Botones limpiar y hablar
             Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp)
             ) {
                 Button(
                     onClick = { fraseConstruida.clear() },
-                    modifier = Modifier.weight(1f).padding(end = 8.dp)
+                    modifier = Modifier.weight(1f),
+                    shape = MaterialTheme.shapes.medium
                 ) {
-                    Text(stringResource(R.string.limpiar))
+                    Text(stringResource(R.string.limpiar), style = MaterialTheme.typography.titleMedium)
                 }
-
                 Button(
                     onClick = {
                         val texto = fraseConstruida.joinToString(" ") { it.nombre }
                         tts.speak(texto, TextToSpeech.QUEUE_FLUSH, null, null)
                     },
-                    modifier = Modifier.weight(1f)
+                    modifier = Modifier.weight(1f),
+                    shape = MaterialTheme.shapes.medium
                 ) {
-                    Text(stringResource(R.string.hablar))
+                    Text(stringResource(R.string.hablar), style = MaterialTheme.typography.titleMedium)
                 }
             }
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(20.dp))
 
-            // Grid de pictogramas
+            // Grid pictogramas
             LazyVerticalGrid(
                 columns = GridCells.Adaptive(minSize = 100.dp),
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier.fillMaxSize(),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                contentPadding = PaddingValues(bottom = 16.dp)
             ) {
                 items(categoriaSeleccionada.pictogramas) { pictograma ->
                     Column(
                         horizontalAlignment = Alignment.CenterHorizontally,
-                        modifier = Modifier
-                            .padding(8.dp)
-                            .fillMaxWidth()
+                        modifier = Modifier.fillMaxWidth()
                     ) {
-                        Button(
-                            onClick = { fraseConstruida.add(pictograma) },
+                        Surface(
+                            shape = MaterialTheme.shapes.medium,
+                            tonalElevation = 6.dp,
                             modifier = Modifier.size(80.dp)
                         ) {
-                            Image(
-                                painter = painterResource(pictograma.imagenResId),
-                                contentDescription = pictograma.nombre,
-                                modifier = Modifier.fillMaxSize()
-                            )
+                            Button(
+                                onClick = { fraseConstruida.add(pictograma) },
+                                modifier = Modifier.fillMaxSize(),
+                                shape = MaterialTheme.shapes.medium,
+                                colors = ButtonDefaults.buttonColors(containerColor = MaterialTheme.colorScheme.surface)
+                            ) {
+                                Image(
+                                    painter = painterResource(pictograma.imagenResId),
+                                    contentDescription = pictograma.nombre,
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                            }
                         }
-                        Text(pictograma.nombre)
+                        Spacer(modifier = Modifier.height(8.dp))
+                        Text(
+                            pictograma.nombre,
+                            style = MaterialTheme.typography.labelMedium,
+                            maxLines = 1
+                        )
                     }
                 }
             }
         }
     }
 }
+

@@ -61,6 +61,8 @@ dependencies {
     implementation(libs.androidx.ui)
     implementation(libs.androidx.datastore.preferences)
     implementation(libs.androidx.room.runtime)
+    implementation(libs.androidx.foundation.android)
+    implementation(libs.androidx.foundation.android)
     kapt(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.ui.graphics)

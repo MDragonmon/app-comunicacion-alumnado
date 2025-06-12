@@ -36,11 +36,16 @@ fun PantallaRegistroUsuario(navController: NavHostController, db: AppDatabase) {
         tipoUsuarioSeleccionado = tipoUsuarioAlumnoLocalizado
     }
 
-    val tiposDeUsuarioLocalizados = listOf(tipoUsuarioAlumnoLocalizado)
+    val tipoUsuarioProfesorLocalizado = stringResource(R.string.tipo_profesor)
+    val tiposDeUsuarioLocalizados = listOf(tipoUsuarioAlumnoLocalizado, tipoUsuarioProfesorLocalizado)
+
+    LaunchedEffect(idiomaActual) {
+        tipoUsuarioSeleccionado = tipoUsuarioAlumnoLocalizado
+    }
 
     val scope = rememberCoroutineScope()
 
-    key(idiomaActual) { // Clave para forzar recomposición cuando el idioma cambie
+    key(idiomaActual) {
         Scaffold(
             topBar = {
                 CenterAlignedTopAppBar(
@@ -121,21 +126,29 @@ fun PantallaRegistroUsuario(navController: NavHostController, db: AppDatabase) {
                             errorMessage = context.getString(R.string.completar_campos_error)
                             return@Button
                         }
-                        errorMessage = null // Limpiar error si los campos están llenos
+
+                        if (!validarContrasena(contrasena)) {
+                            errorMessage = context.getString(R.string.validacion_contraseña)
+                            return@Button
+                        }
+
                         scope.launch {
+                            val usuarioExistente = db.usuarioDao().obtenerPorNombre(usuario)
+                            if (usuarioExistente != null) {
+                                errorMessage = context.getString(R.string.validacion_usuario)
+                                return@launch
+                            }
+
                             try {
                                 db.usuarioDao().insertar(
                                     Usuario(
                                         nombre = nombre,
                                         usuario = usuario,
                                         contrasena = contrasena,
-                                        // Guardamos el tipo en un formato no localizado (ej. "alumno")
-                                        // si es necesario, o el valor localizado si así lo prefieres.
-                                        // Para consistencia, es mejor guardar un valor clave no localizado.
-                                        // Aquí asumimos que "alumno" es la clave interna.
-                                        tipo = "alumno" // tipoUsuarioSeleccionado.lowercase() podría depender del idioma
+                                        tipo = if (tipoUsuarioSeleccionado == tipoUsuarioProfesorLocalizado) "profesor" else "alumno"
                                     )
                                 )
+                                errorMessage = null
                                 navController.navigate("menu/Profesor") {
                                     popUpTo("registroUsuario") { inclusive = true }
                                 }
@@ -164,4 +177,8 @@ fun PantallaRegistroUsuario(navController: NavHostController, db: AppDatabase) {
             }
         }
     }
+}
+fun validarContrasena(contrasena: String): Boolean {
+    val regex = Regex("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[!@#\$%^&*()_+=\\[\\]{};':\"\\\\|,.<>/?]).{8,}\$")
+    return regex.matches(contrasena)
 }

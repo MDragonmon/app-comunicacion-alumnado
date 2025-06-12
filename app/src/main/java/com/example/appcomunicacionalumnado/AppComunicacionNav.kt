@@ -22,5 +22,7 @@ fun AppComunicacionNav() {
         }
         composable("configuracion") { PantallaConfiguracion(navController) }
         composable("registroUsuario") { PantallaRegistroUsuario(navController, db) }
+        composable("usuarios") { PantallaUsuarios(navController, db) }
+        composable("verUsuarios") { PantallaVerUsuarios(navController, db) }
     }
 }

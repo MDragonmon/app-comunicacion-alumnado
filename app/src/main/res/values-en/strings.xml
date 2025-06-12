@@ -1,19 +1,22 @@
 <resources>
-    <string name="app_name">StudentCommunicationApp</string>
+    <string name="app_name">AppCommunicationStudents</string>
     <string name="guardar_configuracion">Save Settings</string>
-    <string name="idioma_actual">Current language: </string>
-    <string name="idioma_actualizado">Updated Language</string>
-    <string name="seleccionar_idioma">Select Language: ></string>
-    <string name="comunicacion">Communication</string>
+    <string name="configuracion_usuario">Settings</string>
     <string name="menu_principal">Main Menu</string>
-    <string name="configuracion_usuario">User Settings</string>
+    <string name="idioma_actual">Current Language: ></string>
+    <string name="idioma_actualizado">Language Updated</string>
+    <string name="seleccionar_idioma">Select Language:></string>
+    <string name="comunicacion">Communication</string>
     <string name="registrar_usuario_titulo">Register User</string>
     <string name="nombre_label">Name</string>
-    <string name="usuario_label">Username</string>
+    <string name="usuario_label">User</string>
+    <string name="cerrar_sesion">Log out</string>
     <string name="contrasena_label">Password</string>
     <string name="tipo_label">Type: %s</string>
     <string name="tipo_alumno">Student</string>
-    <string name="completar_campos_error">Please fill in all fields</string>
+    <string name="tipo_profesor">Teacher</string>
+    <string name="completar_campos_error">Please fill all fields</string>
+    <string name="validacion_contraseña">The password must have at least 8 characters, one uppercase, one lowercase, one number, and one special character.</string>
     <string name="registrar_boton">Register</string>
     <string name="volver_menu_boton">Return to Main Menu</string>
     <string name="error_registrar_usuario">Error registering user: %s</string>
@@ -23,6 +26,8 @@
     <string name="escuchar">listen</string>
     <string name="gustar">like</string>
     <string name="no_gustar">dislike</string>
+    <string name="validacion_usuario">The username is already in use.</string>
+    <string name="pantalla_usuarios">Manage Users</string>
     <string name="dormir">sleep</string>
     <string name="jugar">play</string>
     <string name="leer">read</string>
@@ -32,14 +37,43 @@
     <string name="yo">I</string>
     <string name="tu">you</string>
     <string name="nosotros">we</string>
-    <string name="profesora">teacher</string>
+    <string name="profesora">teacher (female)</string>
     <string name="casa">house</string>
     <string name="colegio">school</string>
     <string name="baño">bathroom</string>
     <string name="gimnasio">gym</string>
     <string name="acciones">actions</string>
     <string name="sujetos">Subjects</string>
-    <string name="lugares">Places</string>
-    <string name="limpiar">clean</string>
-    <string name="hablar">Talk</string>
+    <string name="lugares">places</string>
+    <string name="limpiar">Clear</string>
+    <string name="hablar">Speak</string>
+    <string name="mostrar">Show</string>
+    <string name="ocultar">Hide</string>
+
+    <string name="agregar_otro">Add another</string>
+    <string name="guardar_todos">Save all</string>
+    <string name="crear_usuarios_lote">Create users in batch</string>
+    <string name="no_hay_usuarios">No users to save</string>
+    <string name="corrige_usuarios_invalidos">Correct the invalid users before continuing</string>
+    <string name="usuarios_ya_existen">Some users already exist in the database</string>
+    <string name="acepta_al_menos_un_usuario">You must accept at least one user to save</string>
+    <string name="usuarios_guardados_correctamente">Users saved successfully</string>
+
+    <string name="nombre_completo">Name</string>
+    <string name="volver">Back</string>
+    <string name="tipo_usuario_label">Type</string>
+    <string name="error_ultimo_usuario">Please complete the last user correctly before adding another</string>
+    <string name="ver_usuarios">View users</string>
+
+    <string name="mostrar_contrasena">Show password</string>
+    <string name="ocultar_contrasena">Hide password</string>
+
+    <string name="revisar_usuarios_guardar">Review users before saving</string>
+    <string name="usuario_aceptado">User accepted</string>
+    <string name="usuario_no_aceptado">User not accepted</string>
+    <string name="aceptar_usuario">Accept user</string>
+    <string name="modificar_usuario">Edit user</string>
+    <string name="eliminar_usuario">Delete user</string>
+    <string name="aceptar_todos">Accept all</string>
+    <string name="cancelar">Cancel</string>
 </resources>

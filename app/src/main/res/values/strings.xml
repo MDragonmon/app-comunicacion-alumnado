@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AppComunicacionAlumnado</string>
     <string name="guardar_configuracion">Guardar Configuración</string>
-    <string name="configuracion_usuario"> Configuración</string>
+    <string name="configuracion_usuario">Configuración</string>
     <string name="menu_principal">Menú Principal</string>
     <string name="idioma_actual">Idioma Actual: ></string>
     <string name="idioma_actualizado">Idioma Actualizado</string>
@@ -10,19 +10,28 @@
     <string name="registrar_usuario_titulo">Registrar Usuario</string>
     <string name="nombre_label">Nombre</string>
     <string name="usuario_label">Usuario</string>
+    <string name="cerrar_sesion">Cerrar sesión</string>
     <string name="contrasena_label">Contraseña</string>
     <string name="tipo_label">Tipo: %s</string>
     <string name="tipo_alumno">Alumno</string>
+    <string name="tipo_profesor">Profesor</string>
     <string name="completar_campos_error">Por favor, completa todos los campos</string>
+    <string name="validacion_contraseña">La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un carácter especial.</string>
     <string name="registrar_boton">Registrar</string>
     <string name="volver_menu_boton">Volver al Menú Principal</string>
     <string name="error_registrar_usuario">Error al registrar usuario: %s</string>
     <string name="comer">comer</string>
     <string name="beber">beber</string>
     <string name="ir">ir</string>
+    <string name="volver">Volver</string>
+    <string name="tipo_usuario_label">Tipo</string>
+    <string name="error_ultimo_usuario">Completa correctamente el último usuario antes de agregar otro</string>
+    <string name="ver_usuarios">Ver usuarios</string>
     <string name="escuchar">escuchar</string>
     <string name="gustar">gustar</string>
-    <string name="no_gustar">no_gustar</string>
+    <string name="no_gustar">no gustar</string>
+    <string name="validacion_usuario">El nombre de usuario ya está en uso.</string>
+    <string name="pantalla_usuarios">Gestionar usuarios</string>
     <string name="dormir">dormir</string>
     <string name="jugar">jugar</string>
     <string name="leer">leer</string>
@@ -42,4 +51,29 @@
     <string name="lugares">lugares</string>
     <string name="limpiar">Limpiar</string>
     <string name="hablar">Hablar</string>
+    <string name="mostrar">Mostrar</string>
+    <string name="ocultar">Ocultar</string>
+
+    <string name="agregar_otro">Agregar otro</string>
+    <string name="guardar_todos">Guardar todos</string>
+    <string name="crear_usuarios_lote">Crear usuarios en lote</string>
+    <string name="no_hay_usuarios">No hay usuarios para guardar</string>
+    <string name="corrige_usuarios_invalidos">Corrige los usuarios inválidos antes de continuar</string>
+    <string name="usuarios_ya_existen">Algunos usuarios ya existen en la base de datos</string>
+    <string name="acepta_al_menos_un_usuario">Debes aceptar al menos un usuario para guardar</string>
+    <string name="usuarios_guardados_correctamente">Usuarios guardados correctamente</string>
+
+    <string name="nombre_completo">Nombre</string>
+
+    <string name="mostrar_contrasena">Mostrar contraseña</string>
+    <string name="ocultar_contrasena">Ocultar contraseña</string>
+
+    <string name="revisar_usuarios_guardar">Revisar usuarios para guardar</string>
+    <string name="usuario_aceptado">Usuario aceptado</string>
+    <string name="usuario_no_aceptado">Usuario no aceptado</string>
+    <string name="aceptar_usuario">Aceptar usuario</string>
+    <string name="modificar_usuario">Modificar usuario</string>
+    <string name="eliminar_usuario">Eliminar usuario</string>
+    <string name="aceptar_todos">Aceptar todos</string>
+    <string name="cancelar">Cancelar</string>
 </resources>

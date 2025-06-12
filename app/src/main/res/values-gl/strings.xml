@@ -1,19 +1,22 @@
 <resources>
     <string name="app_name">AppComunicacionAlumnado</string>
     <string name="guardar_configuracion">Gardar Configuración</string>
-    <string name="idioma_actual">Lingua Actual: ></string>
-    <string name="idioma_actualizado">Lingua Actualizada</string>
+    <string name="configuracion_usuario">Configuración</string>
     <string name="menu_principal">Menú Principal</string>
-    <string name="seleccionar_idioma">Seleccione o idioma:></string>
+    <string name="idioma_actual">Idioma Actual: ></string>
+    <string name="idioma_actualizado">Idioma Actualizado</string>
+    <string name="seleccionar_idioma">Selecciona Idioma:></string>
     <string name="comunicacion">Comunicación</string>
-    <string name="configuracion_usuario"> Configuración do Usuario</string>
     <string name="registrar_usuario_titulo">Rexistrar Usuario</string>
     <string name="nombre_label">Nome</string>
     <string name="usuario_label">Usuario</string>
+    <string name="cerrar_sesion">Pechar sesión</string>
     <string name="contrasena_label">Contrasinal</string>
     <string name="tipo_label">Tipo: %s</string>
     <string name="tipo_alumno">Alumno</string>
-    <string name="completar_campos_error">Por favor, enche todos os campos</string>
+    <string name="tipo_profesor">Profesor</string>
+    <string name="completar_campos_error">Por favor, completa todos os campos</string>
+    <string name="validacion_contraseña">O contrasinal debe ter polo menos 8 caracteres, unha maiúscula, unha minúscula, un número e un carácter especial.</string>
     <string name="registrar_boton">Rexistrar</string>
     <string name="volver_menu_boton">Volver ao Menú Principal</string>
     <string name="error_registrar_usuario">Erro ao rexistrar usuario: %s</string>
@@ -23,7 +26,9 @@
     <string name="escuchar">escoitar</string>
     <string name="gustar">gustar</string>
     <string name="no_gustar">non gustar</string>
-    <string name="dormir">durmir</string>
+    <string name="validacion_usuario">O nome de usuario xa está en uso.</string>
+    <string name="pantalla_usuarios">Xestionar usuarios</string>
+    <string name="dormir">dormir</string>
     <string name="jugar">xogar</string>
     <string name="leer">ler</string>
     <string name="silencio">silencio</string>
@@ -32,14 +37,43 @@
     <string name="yo">eu</string>
     <string name="tu">ti</string>
     <string name="nosotros">nós</string>
-    <string name="profesora">mestra</string>
+    <string name="profesora">profesora</string>
     <string name="casa">casa</string>
     <string name="colegio">colexio</string>
-    <string name="baño">aseo</string>
-    <string name="gimnasio">ximnasio</string>
+    <string name="baño">casa de baño</string>
+    <string name="gimnasio">gimnasio</string>
     <string name="acciones">accións</string>
-    <string name="sujetos">suxeitos</string>
+    <string name="sujetos">Suxeitos</string>
     <string name="lugares">lugares</string>
     <string name="limpiar">Limpar</string>
     <string name="hablar">Falar</string>
+    <string name="mostrar">Amosar</string>
+    <string name="ocultar">Agochar</string>
+
+    <string name="agregar_otro">Engadir outro</string>
+    <string name="guardar_todos">Gardar todos</string>
+    <string name="crear_usuarios_lote">Crear usuarios en lote</string>
+    <string name="no_hay_usuarios">Non hai usuarios para gardar</string>
+    <string name="corrige_usuarios_invalidos">Corrixe os usuarios inválidos antes de continuar</string>
+    <string name="usuarios_ya_existen">Algúns usuarios xa existen na base de datos</string>
+    <string name="acepta_al_menos_un_usuario">Debes aceptar ao menos un usuario para gardar</string>
+    <string name="usuarios_guardados_correctamente">Usuarios gardados correctamente</string>
+    <string name="volver">Voltar</string>
+    <string name="tipo_usuario_label">Tipo</string>
+    <string name="error_ultimo_usuario">Completa correctamente o último usuario antes de engadir outro</string>
+    <string name="ver_usuarios">Ver usuarios</string>
+
+    <string name="nombre_completo">Nome</string>
+
+    <string name="mostrar_contrasena">Amosar contrasinal</string>
+    <string name="ocultar_contrasena">Agochar contrasinal</string>
+
+    <string name="revisar_usuarios_guardar">Revisar usuarios para gardar</string>
+    <string name="usuario_aceptado">Usuario aceptado</string>
+    <string name="usuario_no_aceptado">Usuario non aceptado</string>
+    <string name="aceptar_usuario">Aceptar usuario</string>
+    <string name="modificar_usuario">Modificar usuario</string>
+    <string name="eliminar_usuario">Eliminar usuario</string>
+    <string name="aceptar_todos">Aceptar todos</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
