@@ -15,6 +15,7 @@
     <string name="tipo_label">Tipo: %s</string>
     <string name="tipo_alumno">Alumno</string>
     <string name="tipo_profesor">Profesor</string>
+    <string name="eliminar_ultimo_usuario">Eliminar o último usuario</string>
     <string name="completar_campos_error">Por favor, completa todos os campos</string>
     <string name="validacion_contraseña">O contrasinal debe ter polo menos 8 caracteres, unha maiúscula, unha minúscula, un número e un carácter especial.</string>
     <string name="registrar_boton">Rexistrar</string>
@@ -37,7 +38,7 @@
     <string name="yo">eu</string>
     <string name="tu">ti</string>
     <string name="nosotros">nós</string>
-    <string name="profesora">profesora</string>
+    <string name="profesora">profesor</string>
     <string name="casa">casa</string>
     <string name="colegio">colexio</string>
     <string name="baño">casa de baño</string>

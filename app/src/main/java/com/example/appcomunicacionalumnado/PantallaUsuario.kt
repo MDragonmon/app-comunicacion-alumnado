@@ -121,56 +121,83 @@ fun PantallaUsuarios(navController: NavHostController, db: AppDatabase) {
             val textoAceptaAlMenosUnUsuario = stringResource(R.string.acepta_al_menos_un_usuario)
             val textoUsuariosGuardadosCorrectamente = stringResource(R.string.usuarios_guardados_correctamente)
 
-            Row(
+            Column(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween
+                verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Button(onClick = {
-                    val ultimo = usuariosTemporales.lastOrNull()
-                    if (ultimo != null && !validarUsuario(ultimo)) {
-                        scope.launch {
-                            snackbarHostState.showSnackbar(textoErrorUltimoUsuario)
+                Button(
+                    onClick = {
+                        val ultimo = usuariosTemporales.lastOrNull()
+                        if (ultimo != null && !validarUsuario(ultimo)) {
+                            scope.launch {
+                                snackbarHostState.showSnackbar(textoErrorUltimoUsuario)
+                            }
+                            return@Button
                         }
-                        return@Button
-                    }
-                    usuariosTemporales = usuariosTemporales.toMutableList().apply {
-                        add(UsuarioTemporal())
-                    }
-                    aceptados.add(false)
-                }) {
+                        usuariosTemporales = usuariosTemporales.toMutableList().apply {
+                            add(UsuarioTemporal())
+                        }
+                        aceptados.add(false)
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
                     Text(stringResource(R.string.agregar_otro))
                 }
 
-                Button(onClick = {
-                    if (usuariosTemporales.isEmpty()) {
+                Button(
+                    onClick = {
+                        if (usuariosTemporales.isNotEmpty()) {
+                            usuariosTemporales = usuariosTemporales.toMutableList().apply {
+                                removeAt(size - 1)
+                                if (isEmpty()) add(UsuarioTemporal())
+                            }
+                            if (aceptados.isNotEmpty()) {
+                                aceptados.removeAt(aceptados.size - 1)
+                                if (aceptados.size < usuariosTemporales.size) {
+                                    aceptados.add(false)
+                                }
+                            }
+                        }
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text(stringResource(R.string.eliminar_ultimo_usuario))
+                }
+
+                Button(
+                    onClick = {
+                        if (usuariosTemporales.isEmpty()) {
+                            scope.launch {
+                                snackbarHostState.showSnackbar(textoNoHayUsuarios)
+                            }
+                            return@Button
+                        }
+
                         scope.launch {
-                            snackbarHostState.showSnackbar(textoNoHayUsuarios)
+                            val invalidos = usuariosTemporales.filterNot { validarUsuario(it) }
+                            if (invalidos.isNotEmpty()) {
+                                snackbarHostState.showSnackbar(textoCorrigeUsuariosInvalidos)
+                                return@launch
+                            }
+
+                            val yaExisten = existenUsuariosEnBD(usuariosTemporales)
+                            if (yaExisten.any { it }) {
+                                snackbarHostState.showSnackbar(textoUsuariosYaExisten)
+                                return@launch
+                            }
+
+                            aceptados.clear()
+                            aceptados.addAll(usuariosTemporales.map { validarUsuario(it) })
+
+                            showReviewDialog = true
                         }
-                        return@Button
-                    }
-
-                    scope.launch {
-                        val invalidos = usuariosTemporales.filterNot { validarUsuario(it) }
-                        if (invalidos.isNotEmpty()) {
-                            snackbarHostState.showSnackbar(textoCorrigeUsuariosInvalidos)
-                            return@launch
-                        }
-
-                        val yaExisten = existenUsuariosEnBD(usuariosTemporales)
-                        if (yaExisten.any { it }) {
-                            snackbarHostState.showSnackbar(textoUsuariosYaExisten)
-                            return@launch
-                        }
-
-                        aceptados.clear()
-                        aceptados.addAll(usuariosTemporales.map { validarUsuario(it) })
-
-                        showReviewDialog = true
-                    }
-                }) {
+                    },
+                    modifier = Modifier.fillMaxWidth()
+                ) {
                     Text(stringResource(R.string.guardar_todos))
                 }
             }
+
 
             if (showReviewDialog) {
                 ReviewUsuariosDialog(

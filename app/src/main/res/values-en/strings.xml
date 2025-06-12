@@ -15,6 +15,7 @@
     <string name="tipo_label">Type: %s</string>
     <string name="tipo_alumno">Student</string>
     <string name="tipo_profesor">Teacher</string>
+    <string name="eliminar_ultimo_usuario">Delete last user</string>
     <string name="completar_campos_error">Please fill all fields</string>
     <string name="validacion_contraseña">The password must have at least 8 characters, one uppercase, one lowercase, one number, and one special character.</string>
     <string name="registrar_boton">Register</string>
@@ -37,7 +38,7 @@
     <string name="yo">I</string>
     <string name="tu">you</string>
     <string name="nosotros">we</string>
-    <string name="profesora">teacher (female)</string>
+    <string name="profesora">teacher</string>
     <string name="casa">house</string>
     <string name="colegio">school</string>
     <string name="baño">bathroom</string>
