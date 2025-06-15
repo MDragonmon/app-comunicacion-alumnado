@@ -1,9 +1,11 @@
 package com.example.appcomunicacionalumnado
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.compose.*
+
 
 @Composable
 fun AppComunicacionNav() {
@@ -21,7 +23,6 @@ fun AppComunicacionNav() {
             PantallaComunicacion(navController)
         }
         composable("configuracion") { PantallaConfiguracion(navController) }
-        composable("registroUsuario") { PantallaRegistroUsuario(navController, db) }
         composable("usuarios") { PantallaUsuarios(navController, db) }
         composable("verUsuarios") { PantallaVerUsuarios(navController, db) }
     }

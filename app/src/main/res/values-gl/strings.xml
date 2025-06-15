@@ -3,9 +3,14 @@
     <string name="guardar_configuracion">Gardar Configuración</string>
     <string name="configuracion_usuario">Configuración</string>
     <string name="menu_principal">Menú Principal</string>
-    <string name="idioma_actual">Idioma Actual: ></string>
+    <string name="idioma_actual">Idioma Actual: </string>
     <string name="idioma_actualizado">Idioma Actualizado</string>
-    <string name="seleccionar_idioma">Selecciona Idioma:></string>
+    <string name="cambiar_contraseña">Cambiar contrasinal</string>
+    <string name="seleccionar_idioma">Selecciona Idioma:</string>
+    <string name="nueva_contraseña">Novo contrasinal</string>
+    <string name="contraseña_cambiada">Contrasinal modificado</string>
+    <string name="objetos">Obxectos</string>
+    <string name="contraseña_no_coincide">Os contrasinais non coinciden</string>
     <string name="comunicacion">Comunicación</string>
     <string name="registrar_usuario_titulo">Rexistrar Usuario</string>
     <string name="nombre_label">Nome</string>
@@ -64,6 +69,11 @@
     <string name="error_ultimo_usuario">Completa correctamente o último usuario antes de engadir outro</string>
     <string name="ver_usuarios">Ver usuarios</string>
 
+    <string name="modo_simplificado">Modo simplificado</string>
+    <string name="confirmar_contrasena">Confirmar contrasinal</string>
+
+    <string name="modo_completo">Modo completo</string>
+
     <string name="nombre_completo">Nome</string>
 
     <string name="mostrar_contrasena">Amosar contrasinal</string>
@@ -77,4 +87,20 @@
     <string name="eliminar_usuario">Eliminar usuario</string>
     <string name="aceptar_todos">Aceptar todos</string>
     <string name="cancelar">Cancelar</string>
+    <string name="mesa_cole">Táboa</string>
+    <string name="silla_cole">Cadeira</string>
+    <string name="lapiz">Lapis</string>
+    <string name="plastilina">Plastilina</string>
+    <string name="bocadillo">Bocadillo</string>
+    <string name="bus">Autobús</string>
+    <string name="cola">Cola</string>
+    <string name="babero">Babeiro</string>
+    <string name="pizarra_digital">Encerado dixital</string>
+    <string name="proyector">Proxector</string>
+    <string name="hamster">Hamster</string>
+    <string name="gato">Gato</string>
+    <string name="perro">Can</string>
+    <string name="pajaro">Páxaro</string>
+    <string name="cisne">Cisne</string>
+    <string name="animales">Animais</string>
 </resources>

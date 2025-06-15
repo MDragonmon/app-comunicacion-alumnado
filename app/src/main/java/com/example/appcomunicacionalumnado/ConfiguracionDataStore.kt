@@ -14,10 +14,21 @@ private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(na
 object PreferenciasKeys {
     val IDIOMA = stringPreferencesKey("idioma")
     val SESION_USUARIO = stringPreferencesKey("sesion_usuario") // nuevo
+    val CONTRASENA = stringPreferencesKey("contrasena_usuario") // Nueva clave para contraseña
+
 }
 
 class ConfiguracionDataStore(private val context: Context) {
 
+    val contrasena: Flow<String?> = context.dataStore.data.map { preferences ->
+        preferences[PreferenciasKeys.CONTRASENA]
+    }
+
+    suspend fun guardarContrasena(contrasena: String) {
+        context.dataStore.edit { prefs ->
+            prefs[PreferenciasKeys.CONTRASENA] = contrasena
+        }
+    }
     val idioma: Flow<String> = context.dataStore.data.map { preferences ->
         preferences[PreferenciasKeys.IDIOMA] ?: "Castellano"
     }

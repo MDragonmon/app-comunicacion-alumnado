@@ -11,9 +11,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [Usuario::class], version = 1)
+@Database(entities = [Usuario::class, Pictograma::class], version = 2)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun usuarioDao(): UsuarioDao
+    abstract fun pictogramaDao(): PictogramaDao
 
     companion object {
         @Volatile
@@ -26,25 +27,29 @@ abstract class AppDatabase : RoomDatabase() {
                     AppDatabase::class.java,
                     "app_database"
                 )
-                    .addCallback(object : RoomDatabase.Callback() {
-                        override fun onCreate(db: SupportSQLiteDatabase) {
-                            super.onCreate(db)
-                            CoroutineScope(Dispatchers.IO).launch {
-                                getInstance(context).usuarioDao().insertar(
-                                    Usuario(
-                                        nombre = "Admin",
-                                        usuario = "admin",
-                                        contrasena = "admin123",
-                                        tipo = "profesor"
-                                    )
-                                )
-                            }
-                        }
-                    })
+                    .fallbackToDestructiveMigration(true)
                     .build()
                 INSTANCE = instance
+
+                // Insertar usuario admin una vez que la base está lista
+                CoroutineScope(Dispatchers.IO).launch {
+                    val usuarioDao = instance.usuarioDao()
+                    val adminExistente = usuarioDao.obtenerPorNombre("admin")
+                    if (adminExistente == null) {
+                        usuarioDao.insertar(
+                            Usuario(
+                                nombre = "Admin",
+                                usuario = "admin",
+                                contrasena = "admin123",
+                                tipo = "profesor"
+                            )
+                        )
+                    }
+                }
+
                 instance
             }
         }
+
     }
 }

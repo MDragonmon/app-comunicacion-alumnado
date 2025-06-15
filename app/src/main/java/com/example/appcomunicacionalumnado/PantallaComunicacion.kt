@@ -66,6 +66,29 @@ fun PantallaComunicacion(navController: NavHostController) {
                 Pictograma(18, stringResource(R.string.baño), R.drawable.bano),
                 Pictograma(19, stringResource(R.string.gimnasio), R.drawable.gimnasio),
             )
+        ),
+        Categoria(
+            stringResource(R.string.objetos), listOf(
+                Pictograma(22, stringResource(R.string.mesa_cole), R.drawable.mesa_de_colegio),
+                Pictograma(23, stringResource(R.string.silla_cole), R.drawable.silla_de_colegio),
+                Pictograma(24, stringResource(R.string.lapiz), R.drawable.lapiz),
+                Pictograma(25, stringResource(R.string.plastilina), R.drawable.plastilina),
+                Pictograma(26, stringResource(R.string.bocadillo), R.drawable.bocadillo),
+                Pictograma(27, stringResource(R.string.bus), R.drawable.autobus),
+                Pictograma(28, stringResource(R.string.cola), R.drawable.cola),
+                Pictograma(29, stringResource(R.string.babero), R.drawable.babero),
+                Pictograma(30, stringResource(R.string.pizarra_digital), R.drawable.pizarra_digital_interactiva),
+                Pictograma(31, stringResource(R.string.proyector), R.drawable.proyector)
+            )
+        ),
+        Categoria(
+            stringResource(R.string.animales), listOf(
+                Pictograma(32, stringResource(R.string.hamster), R.drawable.hamster),
+                Pictograma(33, stringResource(R.string.gato), R.drawable.gato),
+                Pictograma(34, stringResource(R.string.perro), R.drawable.perro),
+                Pictograma(35, stringResource(R.string.pajaro), R.drawable.periquito),
+                Pictograma(36, stringResource(R.string.cisne), R.drawable.cisne)
+            )
         )
     )
 

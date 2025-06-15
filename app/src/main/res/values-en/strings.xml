@@ -3,9 +3,14 @@
     <string name="guardar_configuracion">Save Settings</string>
     <string name="configuracion_usuario">Settings</string>
     <string name="menu_principal">Main Menu</string>
-    <string name="idioma_actual">Current Language: ></string>
+    <string name="idioma_actual">Current Language: </string>
+    <string name="objetos">Objects</string>
+    <string name="contraseña_no_coincide">The passwords do not match</string>
     <string name="idioma_actualizado">Language Updated</string>
-    <string name="seleccionar_idioma">Select Language:></string>
+    <string name="contraseña_cambiada">Password changed</string>
+    <string name="nueva_contraseña">New password</string>
+    <string name="cambiar_contraseña">Change password</string>
+    <string name="seleccionar_idioma">Select Language:</string>
     <string name="comunicacion">Communication</string>
     <string name="registrar_usuario_titulo">Register User</string>
     <string name="nombre_label">Name</string>
@@ -59,7 +64,9 @@
     <string name="usuarios_ya_existen">Some users already exist in the database</string>
     <string name="acepta_al_menos_un_usuario">You must accept at least one user to save</string>
     <string name="usuarios_guardados_correctamente">Users saved successfully</string>
-
+    <string name="modo_simplificado">Simplified mode</string>
+    <string name="modo_completo">Full mode</string>
+    <string name="confirmar_contrasena">Confirm password</string>
     <string name="nombre_completo">Name</string>
     <string name="volver">Back</string>
     <string name="tipo_usuario_label">Type</string>
@@ -77,4 +84,20 @@
     <string name="eliminar_usuario">Delete user</string>
     <string name="aceptar_todos">Accept all</string>
     <string name="cancelar">Cancel</string>
+    <string name="mesa_cole">Table</string>
+    <string name="silla_cole">Chair</string>
+    <string name="lapiz">Pencil</string>
+    <string name="plastilina">Plasticine</string>
+    <string name="bocadillo">Sandwich</string>
+    <string name="bus">bus</string>
+    <string name="cola">Glue</string>
+    <string name="babero">Bib</string>
+    <string name="pizarra_digital">Digital whiteboard</string>
+    <string name="proyector">Projector</string>
+    <string name="hamster">Hamster</string>
+    <string name="gato">Cat</string>
+    <string name="perro">Dog</string>
+    <string name="pajaro">Bird</string>
+    <string name="cisne">Swan</string>
+    <string name="animales">Animals</string>
 </resources>
